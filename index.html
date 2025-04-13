@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mũi Cà Mau - Đất Mũi Việt Nam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #e74c3c;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #34495e;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://windpro.vn/photos/images/dlb/areas/vietnam/ca-mau/places/mui-ca-mau.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 8px;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .main-content {
+            padding: 2rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .content-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .content-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .content-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-content h3::after {
+            content: "+";
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .content-card.active h3::after {
+            content: "-";
+        }
+        .card-content .short-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .card-content .full-desc {
+            color: #444;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .content-card.active .full-desc {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .footer-section p, .footer-section a {
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #ecf0f1;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+        /* CSS cho phần lịch sử */
+        #history {
+            padding: 2rem 0;
+        }
+
+        .history-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .history-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .history-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .history-item p {
+            color: #444;
+            line-height: 1.7;
+        }
+        /* TIMELINE STYLE */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #e74c3c;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-img {
+            flex: 1;
+            padding: 0 1.5rem;
+        }
+
+        .timeline-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        /* Dấu chấm timeline */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #e74c3c;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item,
+            .timeline-item.reverse {
+                flex-direction: column;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .timeline-img {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .ingredient-btn {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.8rem 0;
+            background: #f8f8f8;
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .ingredient-btn:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Danh sách nguyên liệu */
+        .ingredient-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #f9f9f9;
+            border-radius: 4px;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ingredient-list.active {
+            max-height: 500px;
+            padding: 1rem;
+            border: 1px dashed #e74c3c;
+        }
+
+        .ingredient-list h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .ingredient-list ul {
+            padding-left: 1.5rem;
+            color: #555;
+        }
+
+        .ingredient-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* CSS cho phần bản đồ */
+        #map-section {
+            padding: 2rem 0;
+        }
+
+        .map-container {
+            margin: 0 auto;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            display: block;
+        }
+        /* CSS cho bản đồ */
+        #map-section {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .map-container {
+            margin: 1rem auto 1.5rem;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid #e74c3c;
+        }
+
+        .map-note {
+            color: #e74c3c;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Gallery ảnh */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Phần thống kê */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-desc {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Khoảng cách section */
+        .section-spacing {
+            margin-bottom: 4rem;
+        }
+
+
+        /* CSS cho vòng quay may mắn */
+        .wheel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .wheel-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .wheel-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .wheel-wrapper {
+                position: relative;
+                width: 350px;
+                height: 350px;
+                margin: 0 auto 2rem;
+                display: flex; /* Thay đổi */
+                align-items: center; /* Thay đổi */
+                justify-content: center; /* Thay đổi */
+            }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 15px solid #f1c40f;
+            box-shadow: 0 0 0 5px #e67e22, 0 0 30px rgba(0, 0, 0, 0.2);
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+            transform: rotate(0deg);
+        }
+
+        .wheel-section {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: bottom right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: nowrap; /* Thay đổi */
+        }
+
+
+        .wheel-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #e74c3c;
+            z-index: 10;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid #2c3e50;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .spin-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .spin-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .spin-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .result-message {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .close-modal {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .close-modal:hover {
+            background-color: #2980b9;
+        }
+
+        .timer-message {
+            font-size: 1rem;
+            color: #e74c3c;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            z-index: 1001;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Thêm vào phần style */
+        .hero.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.querySelector('.hero');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    // Xử lý sự kiện click cho mỗi liên kết
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = this.getAttribute('data-section');
+            
+            // Ẩn tất cả các section
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Hiển thị section được chọn
+            document.getElementById(targetSection).style.display = 'block';
+            
+            // Xử lý hiển thị hero section
+            if (targetSection === 'home-section') {
+                heroSection.classList.remove('hidden');
+            } else {
+                heroSection.classList.add('hidden');
+            }
+            
+            // Cuộn lên đầu trang
+            window.scrollTo(0, 0);
+            
+            // Thêm class active cho menu được chọn
+            navLinks.forEach(item => item.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Mặc định hiển thị trang chủ khi load
+    document.getElementById('home-section').style.display = 'block';
+    document.querySelector('nav a[data-section="home-section"]').classList.add('active');
+    heroSection.classList.remove('hidden'); // Đảm bảo hero hiển thị khi load trang chủ
+});
+    </script>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Mũi <span>Cà Mau</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#" data-section="home-section">Trang chủ</a></li>
+                        <li><a href="#" data-section="am-thuc-section">Ẩm thực</a></li>
+                        <li><a href="#" data-section="du-lich-section">Du lịch</a></li>
+                        <li><a href="#" data-section="tro-choi-section">Trò chơi</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Mũi Cà Mau - Đất Mũi Tổ Quốc</h1>
+            <p>Mũi Cà Mau là điểm cực Nam của Tổ quốc, nơi duy nhất trên đất liền có thể ngắm mặt trời mọc ở biển Đông và lặn ở biển Tây. Với hệ sinh thái rừng ngập mặn độc đáo, Mũi Cà Mau mang vẻ đẹp hoang sơ, kỳ vĩ của thiên nhiên.</p>
+            <p>Đến với Mũi Cà Mau, du khách sẽ được trải nghiệm không gian văn hóa sông nước miền Tây, tham quan cột mốc tọa độ quốc gia và thưởng thức những món ăn đặc sản nổi tiếng của vùng đất này.</p>
+        </div>
+    </section>
+ <!-- Section Trang chủ -->
+<section id="home-section" class="page-section">
+    <main class="main-content">
+        <section id="history">
+            <h2 class="section-title">Hành Trình Lịch Sử Cà Mau</h2>
+            
+            <div class="timeline">
+                <!-- Mốc 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-img">
+                        <!-- ẢNH CỦA BẠN CHÈN VÀO ĐÂY -->
+                        <img src="[link_anh_1]" alt="Khai phá Cà Mau" class="img-fluid">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Thế kỷ XVII - Buổi đầu khai phá</h3>
+                        <p>Cà Mau hình thành từ cuối thế kỷ XVII khi lưu dân người Việt di cư đến khai hoang. Tên gọi "Xứ Cà Mau" bắt nguồn từ tiếng Khmer "Tưk Khmau" (nước đen), do màu nước đặc trưng của đất ngập mặn.</p>
+                        <p>Đặc điểm: Vùng đất hoang sơ với hệ sinh thái rừng ngập mặn độc đáo, là tiền đề cho nền văn hóa sông nước sau này.</p>
+                    </div>
+                </div>
+        
+                <!-- Mốc 2 -->
+                <div class="timeline-item reverse">
+                    <div class="timeline-img">
+                        <img src="[link_anh_2]" alt="Cà Mau thời Pháp" class="img-fluid">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>1882-1945 - Thời kỳ Pháp thuộc</h3>
+                        <p>Năm 1882, Pháp sáp nhập Cà Mau vào Nam Kỳ. Họ xây dựng hệ thống kênh rạch để khai thác gỗ và lúa gạo.</p>
+                        <p>Công trình tiêu biểu: Kênh xáng Cà Mau - Năm Căn (1925), chợ nổi Cà Mau (1930).</p>
+                    </div>
+                </div>
+        
+                <!-- Mốc 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-img">
+                        <img src="[link_anh_3]" alt="Kháng chiến" class="img-fluid">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>1945-1975 - Căn cứ cách mạng</h3>
+                        <p>Cà Mau là căn cứ địa quan trọng với hệ thống rừng ngập mặn che chở bộ đội.</p>
+                        <p>Chiến tích tiêu biểu: Trận Đầm Dơi (1968), Chiến thắng Năm Căn (1972).</p>
+                    </div>
+                </div>
+        
+                <!-- Mốc 4 -->
+                <div class="timeline-item reverse">
+                    <div class="timeline-img">
+                        <img src="[link_anh_4]" alt="Cà Mau hiện đại" class="img-fluid">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>1997-nay - Tỉnh Cà Mau</h3>
+                        <p>Từ 1997, Cà Mau chính thức trở thành tỉnh. Năm 2009, Mũi Cà Mau được UNESCO công nhận là Khu dự trữ sinh quyển thế giới.</p>
+                        <p>Phát triển mạnh: Du lịch sinh thái, nuôi tôm công nghệ cao, điện gió.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </main>
+</section>
+
+      <!-- Section Ẩm thực -->
+<section id="am-thuc-section" class="page-section" style="display:none;">
+    <div class="container">
+        <section id="cuisine">
+            <h2 class="section-title">Đặc Sản Ẩm Thực Mũi Cà Mau</h2>
+            <div class="content-grid">
+                <!-- Món 1: Ba khía -->
+                <div class="content-card" onclick="toggleCard(this)">
+                    <div class="card-img">
+                        <img src="https://fileapidulich.surelrn.vn/Upload/VietNam/CaMau/Cuisines/Picture/R637097134629488480.png" alt="Ba khía muối">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ba khía</h3>
+                        <span class="short-desc">Đặc sản nổi tiếng từ con ba khía sống ở rừng ngập mặn</span>
+                        
+                        <button class="ingredient-btn" onclick="event.stopPropagation(); toggleIngredients(this)">
+                            📝 Xem nguyên liệu
+                        </button>
+                        
+                        <div class="ingredient-list">
+                            <h4>Nguyên liệu chính:</h4>
+                            <ul>
+                                <li>Ba khía tươi: 1kg</li>
+                                <li>Muối biển: 200g</li>
+                                <li>Tỏi băm: 50g</li>
+                                <li>Ớt hiểm: 10 trái</li>
+                                <li>Rượu trắng: 100ml</li>
+                                <li>Đường: 2 thìa canh</li>
+                            </ul>
+                        </div>
+            
+                        <div class="full-desc">
+                            <p>Ba khía là loài giáp xác nhỏ sống trong các khu rừng ngập mặn Cà Mau. Khi muối, ba khía được rửa sạch, ngâm nước muối ớt tỏi khoảng 3-5 ngày cho lên men tự nhiên.</p>
+                            <p>Cách thưởng thức: Ba khía muối thường được ăn kèm cơm trắng nóng, hoặc trộn gỏi với khế chua, chuối xanh, rau thơm. Khi ăn, bẻ mai ba khía ra, gỡ thịt và gạch bên trong chấm với nước muối ớt tỏi pha loãng.</p>
+                            <p>Địa chỉ thưởng thức: Các nhà hàng hải sản tại Năm Căn, Đất Mũi hoặc chợ Năm Căn.</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Món 2: Lẩu mắm -->
+                <div class="content-card" onclick="toggleCard(this)">
+                    <div class="card-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJO7U1tzNxpH0vYVCXrualPR8vPAmZTo1kWQ&s" alt="Lẩu mắm U Minh">
+                    </div>
+                    <div class="card-content">
+                        <h3>Lẩu mắm</h3>
+                        <span class="short-desc">Món lẩu đặc trưng từ mắm cá lóc của vùng U Minh Hạ</span>
+                        
+                        <button class="ingredient-btn" onclick="event.stopPropagation(); toggleIngredients(this)">
+                            📝 Xem nguyên liệu
+                        </button>
+                        
+                        <div class="ingredient-list">
+                            <h4>Nguyên liệu chính:</h4>
+                            <ul>
+                                <li>Mắm cá lóc: 200g</li>
+                                <li>Thịt ba chỉ: 300g</li>
+                                <li>Tôm sông: 200g</li>
+                                <li>Cá lóc: 1 con</li>
+                                <li>Bông súng, rau muống đồng</li>
+                                <li>Sả, ớt, tỏi, đường</li>
+                            </ul>
+                        </div>
+            
+                        <div class="full-desc">
+                            <p>Lẩu mắm U Minh có nước dùng được nấu từ mắm cá lóc đặc sản, kết hợp với thịt ba chỉ, tôm, mực và các loại rau rừng đặc trưng như bông súng, rau muống đồng, kèo nèo.</p>
+                            <p>Đặc điểm: Nước lẩu có vị mặn ngọt đậm đà từ mắm cá, hương thơm đặc trưng của sả, ớt và các gia vị miền Tây. Khi ăn thường chấm với nước mắm nguyên chất pha chanh tỏi ớt.</p>
+                            <p>Nơi nổi tiếng: Các nhà hàng dọc tuyến đường vào Vườn quốc gia U Minh Hạ, đặc biệt là khu vực huyện U Minh.</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Món 3: Cua Cà Mau -->
+                <div class="content-card" onclick="toggleCard(this)">
+                    <div class="card-img">
+                        <img src="https://cdn3.ivivu.com/2023/04/cuacamau-ivivu.jpg" alt="Cua Cà Mau">
+                    </div>
+                    <div class="card-content">
+                        <h3>Cua Cà Mau</h3>
+                        <span class="short-desc">Cua biển thịt chắc, ngọt, nhiều gạch nổi tiếng</span>
+                        
+                        <button class="ingredient-btn" onclick="event.stopPropagation(); toggleIngredients(this)">
+                            📝 Xem nguyên liệu
+                        </button>
+                        
+                        <div class="ingredient-list">
+                            <h4>Nguyên liệu chính:</h4>
+                            <ul>
+                                <li>Cua biển Cà Mau: 2 con</li>
+                                <li>Bia: 1 lon (330ml)</li>
+                                <li>Sả: 3 cây</li>
+                                <li>Gừng: 1 củ nhỏ</li>
+                                <li>Muối, tiêu, chanh</li>
+                            </ul>
+                        </div>
+            
+                        <div class="full-desc">
+                            <p>Cua Cà Mau sống trong môi trường tự nhiên ở vùng biển bãi bồi, thức ăn chủ yếu là rong biển và các loài thủy sinh nên thịt rất chắc và ngọt.</p>
+                            <p>Các món ngon từ cua: Cua hấp bia, cua rang muối ớt, cua sốt tiêu đen, cua nướng phô mai, lẩu cua đồng. Đặc biệt nhất là món cua luộc chấm muối tiêu chanh.</p>
+                            <p>Mùa cua ngon nhất: Từ tháng 4 đến tháng 8 hàng năm. Có thể mua cua tươi tại chợ hải sản Cà Mau hoặc các làng nghề đánh bắt ven biển.</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Món 4: Bánh tằm -->
+                <div class="content-card" onclick="toggleCard(this)">
+                    <div class="card-img">
+                        <img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/7/15/1216925/Banh-Tam.jpeg" alt="Bánh tằm Năm Căn">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bánh tằm</h3>
+                        <span class="short-desc">Món bánh dân dã đặc trưng vùng Năm Căn</span>
+                        
+                        <button class="ingredient-btn" onclick="event.stopPropagation(); toggleIngredients(this)">
+                            📝 Xem nguyên liệu
+                        </button>
+                        
+                        <div class="ingredient-list">
+                            <h4>Nguyên liệu chính:</h4>
+                            <ul>
+                                <li>Bột gạo: 500g</li>
+                                <li>Bột năng: 100g</li>
+                                <li>Nước cốt dừa: 200ml</li>
+                                <li>Đường thốt nốt: 150g</li>
+                                <li>Mè trắng: 50g</li>
+                                <li>Đậu phộng rang: 50g</li>
+                            </ul>
+                        </div>
+            
+                        <div class="full-desc">
+                            <p>Bánh tằm được làm từ bột gạo pha với một ít bột năng, tráng mỏng thành từng lớp rồi cắt sợi to. Điểm đặc biệt là sợi bánh dai mềm nhưng không nát.</p>
+                            <p>Cách thưởng thức: Bánh ăn kèm với nước cốt dừa đặc, đường thốt nốt, mè rang và đậu phộng. Người dân địa phương thường ăn kèm với chuối chín hoặc khoai lang luộc.</p>
+                            <p>Địa chỉ nổi tiếng: Các quán bánh tằm ven đường ở thị trấn Năm Căn, đặc biệt là quán bánh tằm bà Hai Nở đã tồn tại hơn 30 năm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+ <!-- Section Du lịch -->
+<section id="du-lich-section" class="page-section" style="display:none;">
+    <div class="container">
+        <section id="map-section">
+            <h2 class="section-title">Bản Đồ Mũi Cà Mau</h2>
+            <div class="map-container">
+                <!-- Bản đồ với marker tại tọa độ chính xác -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d986.221448948854!2d104.71993436737802!3d8.606962334740375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a414445d1ddd4f%3A0x302698714c589db8!2sDat%20Mui%20Landmark!5e0!3m2!1sen!2s!4v1744514363322!5m2!1sen!2s" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    aria-label="Bản đồ Mũi Cà Mau">
+                </iframe>
+            </div>
+            <p class="map-note">📍 Điểm đánh dấu màu đỏ là vị trí chính xác của Mũi Cà Mau - điểm cực Nam Tổ quốc</p>
+        </section>
+
+        <section id="gallery" class="section-spacing">
+            <h2 class="section-title">Khám Phá Mũi Cà Mau Qua Ảnh</h2>
+            <div class="gallery-grid">
+                <!-- Ảnh 1 - Thay link_anh_1 bằng URL ảnh của bạn -->
+                <div class="gallery-item">
+                    <img src="link_anh_1" alt="Cột mốc tọa độ quốc gia" class="gallery-img">
+                    <div class="img-caption">Cột mốc tọa độ quốc gia</div>
+                </div>
+                
+                <!-- Ảnh 2 -->
+                <div class="gallery-item">
+                    <img src="link_anh_2" alt="Rừng ngập mặn" class="gallery-img">
+                    <div class="img-caption">Hệ sinh thái rừng ngập mặn</div>
+                </div>
+                
+                <!-- Ảnh 3 -->
+                <div class="gallery-item">
+                    <img src="link_anh_3" alt="Hoàng hôn" class="gallery-img">
+                    <div class="img-caption">Hoàng hôn ở biển Tây</div>
+                </div>
+                
+                <!-- Ảnh 4 -->
+                <div class="gallery-item">
+                    <img src="link_anh_4" alt="Văn hóa địa phương" class="gallery-img">
+                    <div class="img-caption">Đời sống người dân</div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Phần thống kê thú vị -->
+        <section id="fun-facts" class="section-spacing">
+            <h2 class="section-title">ĐÁNG CHÚ Ý</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-number">1.000+</div>
+                    <div class="fact-desc">Loài sinh vật trong rừng ngập mặn</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-number">368</div>
+                    <div class="fact-desc">Km bờ biển</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-number">2009</div>
+                    <div class="fact-desc">Năm được UNESCO công nhận</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- Section Trò chơi -->
+<section id="tro-choi-section" class="page-section" style="display:none;">
+    <main class="main-content">
+        <div class="wheel-container">
+            <h2 class="wheel-title">VÒNG QUAY MAY MẮN</h2>
+            <p class="wheel-subtitle">Thử vận may để có cơ hội nhận vé tham quan Mũi Cà Mau miễn phí! Mỗi người chỉ được quay 1 lần trong 24 giờ.</p>
+            
+            <div class="wheel-wrapper">
+                <div class="wheel" id="wheel"></div>
+                <div class="wheel-pointer"></div>
+                <div class="wheel-center">QUAY</div>
+            </div>
+            
+            <button class="spin-btn" id="spin-btn">QUAY NGAY</button>
+            <p class="timer-message" id="timer-message"></p>
+        </div>
+        
+        <div class="result-modal" id="result-modal">
+            <div class="result-content">
+                <h3 class="result-title" id="result-title">KẾT QUẢ</h3>
+                <p class="result-message" id="result-message"></p>
+                <button class="close-modal" id="close-modal">ĐÓNG</button>
+            </div>
+        </div>
+    </main>
+</section>
+
+
+    <script>
+        function toggleCard(card) {
+            document.querySelectorAll('.content-card').forEach(item => {
+                if (item !== card) {
+                    item.classList.remove('active');
+                }
+            });
+            card.classList.toggle('active');
+        }
+    </script>
+
+<script>
+    function toggleCard(card) {
+        document.querySelectorAll('.content-card').forEach(item => {
+            if (item !== card) {
+                item.classList.remove('active');
+            }
+        });
+        card.classList.toggle('active');
+    }
+</script>
+
+<script>
+    function toggleIngredients(btn) {
+        const ingredientList = btn.nextElementSibling;
+        ingredientList.classList.toggle('active');
+        
+        // Đổi icon và text nút
+        if (ingredientList.classList.contains('active')) {
+            btn.innerHTML = '📋 Đóng nguyên liệu';
+        } else {
+            btn.innerHTML = '📝 Xem nguyên liệu';
+        }
+        
+        // Ngăn sự kiện click lan ra card
+        event.stopPropagation();
+    }
+    
+    // Giữ nguyên hàm toggleCard cũ
+    function toggleCard(card) {
+        document.querySelectorAll('.content-card').forEach(item => {
+            if (item !== card) item.classList.remove('active');
+        });
+        card.classList.toggle('active');
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tạo vòng quay
+        const wheel = document.getElementById('wheel');
+        const spinBtn = document.getElementById('spin-btn');
+        const resultModal = document.getElementById('result-modal');
+        const resultTitle = document.getElementById('result-title');
+        const resultMessage = document.getElementById('result-message');
+        const closeModal = document.getElementById('close-modal');
+        const timerMessage = document.getElementById('timer-message');
+        
+        // Màu sắc cho các ô
+        const colors = [
+            '#e74c3c', '#3498db', '#2ecc71', '#f1c40f', 
+            '#9b59b6', '#1abc9c', '#e67e22', '#34495e',
+            '#d35400', '#27ae60'
+        ];
+        
+        // Tạo các ô trên vòng quay
+        const sections = 10;
+        const deg = 360 / sections;
+        const winningSection = Math.floor(Math.random() * sections); // Ô trúng thưởng ngẫu nhiên
+        
+        for (let i = 0; i < sections; i++) {
+            const section = document.createElement('div');
+            section.className = 'wheel-section';
+            section.style.transform = `rotate(${deg * i}deg)`;
+            section.style.backgroundColor = colors[i];
+            
+            const text = document.createElement('div');
+            text.style.transform = `rotate(${deg / 2}deg)`;
+            text.style.textAlign = 'center';
+            text.style.width = '100px';
+            text.style.marginLeft = '-30px';
+            text.innerHTML = i === winningSection ? 'TRÚNG THƯỞNG' : 'MAY MẮN';
+            
+            section.appendChild(text);
+            wheel.appendChild(section);
+        }
+        
+        // Kiểm tra thời gian quay cuối cùng
+        const lastSpinKey = 'lastSpinTime';
+        let lastSpinTime = localStorage.getItem(lastSpinKey);
+        let canSpin = true;
+        
+        if (lastSpinTime) {
+            const currentTime = new Date().getTime();
+            const timeDiff = currentTime - parseInt(lastSpinTime);
+            const hoursDiff = timeDiff / (1000 * 60 * 60);
+            
+            if (hoursDiff < 24) {
+                canSpin = false;
+                const hoursLeft = Math.floor(24 - hoursDiff);
+                const minutesLeft = Math.floor((24 - hoursDiff - hoursLeft) * 60);
+                timerMessage.textContent = `Bạn có thể quay lại sau ${hoursLeft} giờ ${minutesLeft} phút nữa`;
+                spinBtn.disabled = true;
+            }
+        }
+        
+        // Xử lý sự kiện quay
+        spinBtn.addEventListener('click', function() {
+            if (!canSpin) return;
+            
+            spinBtn.disabled = true;
+            const spinDegrees = 360 * 5 + Math.floor(Math.random() * 360); // Quay 5 vòng + ngẫu nhiên
+            const finalDegree = spinDegrees % 360;
+            const winningDeg = 360 - (winningSection * deg + deg / 2);
+            const isWin = Math.abs(finalDegree - winningDeg) < deg;
+            
+            wheel.style.transform = `rotate(${-spinDegrees}deg)`;
+            
+            // Lưu thời gian quay cuối cùng
+            localStorage.setItem(lastSpinKey, new Date().getTime().toString());
+            
+            // Hiển thị kết quả sau khi quay xong
+            setTimeout(function() {
+                if (isWin) {
+                    resultTitle.textContent = 'CHÚC MỪNG!';
+                    resultMessage.textContent = 'Bạn đã trúng thưởng 1 vé tham quan Mũi Cà Mau miễn phí! Vui lòng liên hệ với chúng tôi để nhận thưởng.';
+                    createConfetti();
+                } else {
+                    resultTitle.textContent = 'TIẾC QUÁ!';
+                    resultMessage.textContent = 'Chúc bạn may mắn lần sau! Hãy quay lại sau 24 giờ để thử vận may.';
+                }
+                
+                resultModal.style.display = 'flex';
+                
+                // Cập nhật thông báo thời gian
+                timerMessage.textContent = 'Bạn có thể quay lại sau 24 giờ';
+            }, 4000);
+        });
+        
+        // Đóng modal
+        closeModal.addEventListener('click', function() {
+            resultModal.style.display = 'none';
+        });
+        
+        // Tạo hiệu ứng confetti khi trúng thưởng
+        function createConfetti() {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', 
+                            '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', 
+                            '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                // Xóa confetti sau khi animation kết thúc
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Kiểm tra thời gian còn lại mỗi phút
+        function updateTimer() {
+            if (lastSpinTime) {
+                const currentTime = new Date().getTime();
+                const timeDiff = currentTime - parseInt(lastSpinTime);
+                const hoursDiff = timeDiff / (1000 * 60 * 60);
+                
+                if (hoursDiff < 24) {
+                    const hoursLeft = Math.floor(24 - hoursDiff);
+                    const minutesLeft = Math.floor((24 - hoursDiff - hoursLeft) * 60);
+                    timerMessage.textContent = `Bạn có thể quay lại sau ${hoursLeft} giờ ${minutesLeft} phút nữa`;
+                } else {
+                    canSpin = true;
+                    spinBtn.disabled = false;
+                    timerMessage.textContent = '';
+                    localStorage.removeItem(lastSpinKey);
+                }
+            }
+        }
+        
+        setInterval(updateTimer, 60000); // Cập nhật mỗi phút
+    });
+</script>
+</body>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <p>Trang web giới thiệu về Mũi Cà Mau và ẩm thực đặc trưng vùng đất cực Nam Tổ quốc</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Email: info@muicamau.vn</p>
+                <p>Điện thoại: 0123 456 789</p>
+                <p>Địa chỉ: Mũi Cà Mau, tỉnh Cà Mau</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Mũi Cà Mau Travel.</p>
+        </div>
+    </div>
+</footer>
+
+</html>
